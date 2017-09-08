@@ -72,15 +72,17 @@ var hero = {
 };
 
 //===========================================//
-var deathMessage = 'Nothing\'s dead yet.'
+var deathMessage = 'What isn\'t alive may never die.';
 var goblinCount = 1;
 var availableUnits = [hero, goblin];
 
 var checkUnits = function() {
   for (var i = 0; i < availableUnits.length; i++) {
     console.log(availableUnits[i].varName);
+    console.log('');
     console.log(availableUnits[i]);
   }
+  console.log('');
   console.log('make them fight with the combat(attacker,victim) function!');
 };
 
@@ -150,6 +152,27 @@ var combat = function(attacker, victim) { // create something to check if units 
 };
 //===========================================//
 
+var deathMatch = function(attacker, victim) {
+
+while ( (attacker.life > 0) || (victim.life > 0) ) {
+  //attacker turn
+  combat(attacker, victim);
+  console.log(victim.name + '\'s current life is ' + victim.life);
+  combat(victim, attacker);
+  console.log(attacker.name + '\'s current life is ' + attacker.life);
+}
+
+if (attacker.life <= 0) {
+  return victim.name + ' is Victorious';
+} else if (victim.life <= 0) {
+  return attacker.name + ' is Victorious!';
+}
+
+return 'something needs to be double checked in the deathMatch conditions.';
+};
+
+//===========================================//
+
 var checkForDeath = function(attacker, victim) {
 
   if ((victim.life <= 0) && (attacker.name === 'You') && (victim.name === 'You')) {
@@ -207,6 +230,7 @@ var functionList = [
   'checkUnits',
   'checkHit',
   'combat',
+  'deathMatch',
   'checkForDeath',
   'moreInfo'
 ];
