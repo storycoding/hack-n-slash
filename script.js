@@ -98,16 +98,17 @@ var hero = {
 var combatMessage = "Default";
 var deathMessage = 'What isn\'t alive may never die.';
 var goblinCount = 1;
-var availableUnits = [hero, goblin];
+var availableUnits = [hero, goblin, orc, giant];
 
 var checkUnits = function() {
   for (var i = 0; i < availableUnits.length; i++) {
+    console.log('');
     console.log(availableUnits[i].varName);
     console.log('');
     console.log(availableUnits[i]);
   }
   console.log('');
-  console.log('make them fight with the combat(attacker,victim) function!');
+  console.log('make them fight to death with the deathMatch(attacker,victim); function!');
 };
 
 
@@ -200,9 +201,9 @@ while ( (attacker.life > 0) && (victim.life > 0) ) {
 }
 
 if (attacker.life <= 0) {
-  return victim.name + ' is Victorious';
+  return attacker.name + ' has died in combat.';
 } else if (victim.life <= 0) {
-  return attacker.name + ' is Victorious!';
+  return victim.name + ' has died in combat.';
 }
 
 return 'something needs to be double checked in the deathMatch conditions.';
@@ -231,7 +232,7 @@ var checkForDeath = function(attacker, victim) {
   }
 
   return false;
-}
+};
 
 //===========================================//
 //================ GAME START ===============//
