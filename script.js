@@ -8,7 +8,7 @@ var roll = function(times, sides) {
   return times * sides;
 };
 
-//===========================================//
+//========== random name generator ==========//
 
 var generateName = function() {
 
@@ -19,7 +19,7 @@ var generateName = function() {
   return name;
 };
 
-//===========================================//
+//============= unit creation ==============//
 
 var createUnit = function(type) {
 
@@ -31,7 +31,7 @@ var createUnit = function(type) {
 
   goblinCount++;
 
-  var unit = {
+  var unit = { // make it so the index of the unit is the unit's name
     varName: 'gotta use availableUnits[index]', // sort this out
     name: generateName(),
     health: roll(2, 4),
@@ -41,24 +41,46 @@ var createUnit = function(type) {
     armor: 0
   };
 
-  // make it so the index of the unit is the unit's name
-
   availableUnits.push(unit);
 
   return unit;
 };
+
 //===========================================//
 //============== GAME DATABASE ==============//
 //===========================================//
 
+var giant = {
+  varName: 'giant',
+  name: 'giant ' + generateName(),
+  life: roll(8, 12),
+  speed: 1,
+  attack: 12,
+  dodge: 0,
+  armor: 0,
+  level: 8
+};
+
+var orc = {
+  varName: 'orc',
+  name: 'Orc ' + generateName(),
+  life: roll(4, 6),
+  speed: 1,
+  attack: 10,
+  dodge: 2,
+  armor: 2,
+  level : 4
+};
+
 var goblin = {
   varName: 'goblin',
   name: 'Goblin ' + generateName(),
-  life: roll(2, 4),
+  life: roll(4, 4),
   speed: 2,
-  attack: 4,
+  attack: 6,
   dodge: 8,
-  armor: 0
+  armor: 0,
+  level: 2,
 };
 
 var hero = {
@@ -68,10 +90,12 @@ var hero = {
   speed: 1,
   attack: 8,
   dodge: 12,
-  armor: 2
+  armor: 2,
+  level: 6
 };
 
 //===========================================//
+var combatMessage = "Default";
 var deathMessage = 'What isn\'t alive may never die.';
 var goblinCount = 1;
 var availableUnits = [hero, goblin];
@@ -93,6 +117,9 @@ var checkUnits = function() {
 //================ COMBAT ===================//
 //===========================================//
 
+
+//=============== hit check =================//
+
 var checkHit = function(attacker, victim) {
 
   var hitRoll = roll(1, 20);
@@ -104,10 +131,9 @@ var checkHit = function(attacker, victim) {
   return false;
 };
 
-//===========================================//
+//=========== damage calculator =============//
 
 var checkDamage = function(attacker, victim) {
-  // if hits the armor twice
 
   var damage = 0;
 
@@ -120,9 +146,13 @@ var checkDamage = function(attacker, victim) {
   return damage;
 };
 
-//===========================================//
+//============ COMBAT ROUND =============//
 
 var combat = function(attacker, victim) { // create something to check if units exist
+
+if ( (attacker.name === undefined) || (victim.name === undefined) ) {
+  return "you are using an undefined unit. \n Type checkUnits() to see what's available, or create your own with createUnit()";
+}
 
   if (victim.life <= 0) {
     return 'invalid target';
@@ -150,12 +180,19 @@ var combat = function(attacker, victim) { // create something to check if units 
 
   return victim.name + ' suffered ' + damage + ' points of damage.';
 };
-//===========================================//
+//=============== DEATHMATCH =================//
 
 var deathMatch = function(attacker, victim) {
 
-while ( (attacker.life > 0) || (victim.life > 0) ) {
-  //attacker turn
+if ( (attacker.life <= 0) || (victim.life <= 0) ) {
+  return 'you can\'t have a deathMatch with a deadman.';
+}
+
+if ( (attacker.life === undefined) || (victim.life === undefined) ) {
+  return 'one or more of your units doesn\'n exist in the database.';
+}
+
+while ( (attacker.life > 0) && (victim.life > 0) ) {
   combat(attacker, victim);
   console.log(victim.name + '\'s current life is ' + victim.life);
   combat(victim, attacker);
@@ -234,3 +271,16 @@ var functionList = [
   'checkForDeath',
   'moreInfo'
 ];
+
+
+//===========================================//
+//================ TO DO LIST ===============//
+//===========================================//
+
+// make a prompt(yourSummon) to create the hero
+// make a level up system
+// make money
+// make a shop that sells potions
+// make inventory
+// make use item function
+// make final boss
