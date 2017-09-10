@@ -12,7 +12,7 @@ var roll = function(times, sides) {
 
 //========== random name generator ==========//
 
-var generateName = function() {
+function generateName() {
 
   var nameArray = [
     'Noob-Noob', 'Sik', 'Krak', 'Steven', 'Pablo', 'Courtney', 'Weimin',
@@ -28,8 +28,8 @@ var generateName = function() {
 function createUnit(unitRaceString, _healthRoll, _speed, _attack, _dodge, _armor, _level, _goldRoll) {
 
   var unit = {
-    varName: unitRaceString,
-    name: unitRaceString + " " + GenerateName(),
+    varName: "check customUnits for its given key",
+    name: unitRaceString + " " + generateName(),
     health: _healthRoll,
     speed: _speed,
     attack: _attack,
