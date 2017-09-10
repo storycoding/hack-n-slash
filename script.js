@@ -1,11 +1,13 @@
 //============ basic dice roll ==============//
 
 var roll = function(times, sides) {
+  var result = 0;
 
-  var sides = Math.floor(Math.random() *
-    (1 + sides - 1)) + 1;
+  for (var i = 0; i < times; i++) {
+    result += Math.floor(Math.random() * (1 + sides - 1)) + 1;
+  }
 
-  return times * sides;
+  return result;
 };
 
 //========== random name generator ==========//
@@ -38,7 +40,9 @@ var createUnit = function(type) {
     speed: 1,
     attack: 4,
     dodge: 8,
-    armor: 0
+    armor: 0,
+    level: 2,
+    gold: roll(1, 4)
   };
 
   availableUnits.push(unit);
@@ -46,19 +50,58 @@ var createUnit = function(type) {
   return unit;
 };
 
+//============== reward system ==============//
+
+function reward(giver, taker) {
+
+  goldReward = giver.gold;
+  taker.gold += goldReward;
+  giver.gold = 0;
+
+  return;
+}
+
 //===========================================//
 //============== GAME DATABASE ==============//
 //===========================================//
 
+// A list of all the objects in the game so far
+
+//=================== ITEMS =================//
+
+//list of items with price
+potion = {
+  name: 'potion',
+  power: 8,
+  cost: 3,
+  effect: "Increases life by 8 points"
+};
+
+//=================== UNITS =================//
+
+var hero = {
+  varName: 'hero',
+  name: prompt("What is your name?", "Defaultiago"),
+  life: roll(6, 6),
+  speed: 1,
+  attack: 8,
+  dodge: 12,
+  armor: 2,
+  level: 6,
+  gold: roll(1, 6),
+  inventory: { potion : { amount : 1 } }
+};
+
 var giant = {
   varName: 'giant',
   name: 'giant ' + generateName(),
-  life: roll(8, 12),
+  life: roll(12, 12),
   speed: 1,
   attack: 12,
   dodge: 0,
   armor: 0,
-  level: 8
+  level: 8,
+  gold: roll(6, 6)
 };
 
 var orc = {
@@ -69,7 +112,32 @@ var orc = {
   attack: 10,
   dodge: 2,
   armor: 2,
-  level : 4
+  level: 4,
+  gold: roll(2, 4)
+};
+
+var hobgoblin = {
+  varName: 'hobgoblin',
+  name: 'Hobgoblin ' + generateName(),
+  life: roll(8, 4),
+  speed: 2,
+  attack: 8,
+  dodge: 8,
+  armor: 2,
+  level: 8,
+  gold: roll(2, 6)
+};
+
+var direwolf = {
+  varName: 'direwolf',
+  name: 'Dire Wolf ' + generateName(),
+  life: roll(8, 6),
+  speed: 2,
+  attack: 10,
+  dodge: 12,
+  armor: 0,
+  level: 12,
+  gold: roll(6, 6)
 };
 
 var goblin = {
@@ -81,24 +149,16 @@ var goblin = {
   dodge: 8,
   armor: 0,
   level: 2,
-};
-
-var hero = {
-  varName: 'hero',
-  name: 'You',
-  life: roll(6, 6),
-  speed: 1,
-  attack: 8,
-  dodge: 12,
-  armor: 2,
-  level: 6
+  gold: roll(1, 4)
 };
 
 //===========================================//
+var deathByCombat = false;
+var shopVisits = 0;
 var combatMessage = "Default";
-var deathMessage = 'What isn\'t alive may never die.';
+var goldReward = 0;
 var goblinCount = 1;
-var availableUnits = [hero, goblin, orc, giant];
+var availableUnits = [hero, goblin, orc, giant, direwolf, hobgoblin];
 
 var checkUnits = function() {
   for (var i = 0; i < availableUnits.length; i++) {
@@ -121,7 +181,7 @@ var checkUnits = function() {
 
 //=============== hit check =================//
 
-var checkHit = function(attacker, victim) {
+function checkHit(attacker, victim) {
 
   var hitRoll = roll(1, 20);
 
@@ -130,11 +190,11 @@ var checkHit = function(attacker, victim) {
   }
 
   return false;
-};
+}
 
 //=========== damage calculator =============//
 
-var checkDamage = function(attacker, victim) {
+function checkDamage(attacker, victim) {
 
   var damage = 0;
 
@@ -145,15 +205,18 @@ var checkDamage = function(attacker, victim) {
   }
 
   return damage;
-};
+}
 
 //============ COMBAT ROUND =============//
 
-var combat = function(attacker, victim) { // create something to check if units exist
+function combat(attacker, victim) {
+  // create something to check if units exist
 
-if ( (attacker.name === undefined) || (victim.name === undefined) ) {
-  return "you are using an undefined unit. \n Type checkUnits() to see what's available, or create your own with createUnit()";
-}
+  deathByCombat = false;
+
+  if ((attacker.name === undefined) || (victim.name === undefined)) {
+    return "you are using an undefined unit. \n Type checkUnits() to see what's available, or create your own with createUnit()";
+  }
 
   if (victim.life <= 0) {
     return 'invalid target';
@@ -163,72 +226,80 @@ if ( (attacker.name === undefined) || (victim.name === undefined) ) {
   }
 
   if (!checkHit(attacker, victim)) {
-
-    return attacker.name + ' failed to hit ' + victim.name + '.';
+    console.log(attacker.name + ' failed to hit ' + victim.name + '.');
+    return;
   }
 
   var damage = checkDamage(attacker, victim);
 
   if (damage <= 0) {
-    return victim.name + ' suffered no damage';
+    console.log(victim.name + ' suffered no damage');
+    return;
   }
 
   victim.life -= damage;
 
-  if (checkForDeath(attacker, victim) === true) {
-    return deathMessage;
+  checkForDeath(attacker, victim);
+
+  if (deathByCombat === true) {
+    return;
   }
 
-  return victim.name + ' suffered ' + damage + ' points of damage.';
-};
+  console.log(victim.name + ' suffered ' + damage + ' points of damage.');
+  return;
+}
 //=============== DEATHMATCH =================//
 
-var deathMatch = function(attacker, victim) {
+function deathMatch(attacker, victim) {
+  deathByCombat = false;
 
-if ( (attacker.life <= 0) || (victim.life <= 0) ) {
-  return 'you can\'t have a deathMatch with a deadman.';
+  if ((attacker.life <= 0) || (victim.life <= 0)) {
+    return 'you can\'t have a deathMatch with a deadman.';
+  }
+
+  if ((attacker.life === undefined) || (victim.life === undefined)) {
+    return 'one or more of your units doesn\'n exist in the database.';
+  }
+
+  while ((attacker.life > 0) && (victim.life > 0)) {
+
+    combat(attacker, victim);
+    if (deathByCombat === true) { return; }
+    console.log(victim.name + '\'s current life is ' + victim.life + '.');
+
+    combat(victim, attacker);
+    if (deathByCombat === true) { return; }
+    console.log(attacker.name + '\'s current life is ' + attacker.life + '.');
+  }
+
+  return "None of the conditions were met, this message shouldn't log!";
 }
-
-if ( (attacker.life === undefined) || (victim.life === undefined) ) {
-  return 'one or more of your units doesn\'n exist in the database.';
-}
-
-while ( (attacker.life > 0) && (victim.life > 0) ) {
-  combat(attacker, victim);
-  console.log(victim.name + '\'s current life is ' + victim.life);
-  combat(victim, attacker);
-  console.log(attacker.name + '\'s current life is ' + attacker.life);
-}
-
-if (attacker.life <= 0) {
-  return attacker.name + ' has died in combat.';
-} else if (victim.life <= 0) {
-  return victim.name + ' has died in combat.';
-}
-
-return 'something needs to be double checked in the deathMatch conditions.';
-};
 
 //===========================================//
 
-var checkForDeath = function(attacker, victim) {
-
-  if ((victim.life <= 0) && (attacker.name === 'You') && (victim.name === 'You')) {
-    deathMessage = ('You killed yourself. Why would you do that!?');
+function checkForDeath(attacker, victim) {
+  var goldReward = 0;
+  if ((victim.life <= 0) && (attacker.id === 'hero') && (victim.id === 'hero')) {
+    console.log('You killed yourself. Why would you do that!?');
     return true;
 
   } else if ((victim.life <= 0) && (attacker.name === victim.name)) {
-    deathMessage = (attacker.name + ' killed itself. What a dummy.');
-    return true;
-  }
-
-  if ((victim.life <= 0) && (attacker.name === 'You')) {
-    deathMessage = (victim.name + ' is dead! \n' + attacker.name + ' are victorious!');
+    console.log(attacker.name + ' killed itself. What a dummy.');
     return true;
 
   } else if (victim.life <= 0) {
-    deathMessage = (victim.name + ' is dead! \n' + attacker.name + ' is victorious!');
-    return true;
+    reward(victim, attacker);
+    console.log(victim.name + " has died in combat.");
+    console.log(attacker.name + " got " + goldReward + " gold.");
+    deathByCombat = true;
+    return deathByCombat;
+
+  } else if (attacker.life <= 0) {
+    reward(attacker, attacker);
+    console.log(attacker.name + " has died in combat. ");
+    console.log(victim.name + " got " + goldReward + " gold.");
+    deathByCombat = true;
+    return deathByCombat;
   }
 
   return false;
@@ -237,19 +308,20 @@ var checkForDeath = function(attacker, victim) {
 //===========================================//
 //================ GAME START ===============//
 //===========================================//
+
 console.API;
 
 if (typeof console._commandLineAPI !== 'undefined') {
-    console.API = console._commandLineAPI; //chrome
+  console.API = console._commandLineAPI; //chrome
 } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
-    console.API = console._inspectorCommandLineAPI; //Safari
+  console.API = console._inspectorCommandLineAPI; //Safari
 } else if (typeof console.clear !== 'undefined') {
-    console.API = console;
+  console.API = console;
 }
 
 console.API.clear();
 
-alert("Hello Adventurer! This is a hackable hack and slash!");
+alert("Hello " + hero.name + "! This is a hackable hack and slash!");
 alert("Type moreInfo() to see the list of commands");
 console.log("Hello Adventurer! This is a hackable hack and slash!");
 console.log("Type moreInfo() to see the list of commands");
@@ -257,11 +329,13 @@ console.log("Type moreInfo() to see the list of commands");
 
 var moreInfo = function() {
   console.log("Type checkUnits() to see the list of units");
-  console.log("Type combat(attacker,victim) to make something hit something");
-  console.log("Type functionList to see the list of functions");
+  console.log("Type hero to see your hero's status and inventory");
+  console.log("Type shop() to browse the shop for items");
+  console.log("Type use() to use an item in your hero's inventory");
+  console.log("Type deathMatch(attacker,victim) to witness a battle do the death");
 };
 
-var functionList = [
+var functionList = [ // update this or remove it
   'roll',
   'generateName',
   'createUnit',
@@ -285,3 +359,68 @@ var functionList = [
 // make inventory
 // make use item function
 // make final boss
+// a unit reroll function
+// a battle reward system
+// fix ''s and ""s
+// make use item
+// refactor death in battle
+
+//===========================================//
+//=================== SHOP ==================//
+//===========================================//
+
+var shopInventory = {
+  potion : {cost : 3, description : "increases life by 8 points."}
+};
+
+//=================== shop =================//
+
+function shop() {
+  //make if for !first visit
+  if (shopVisits === 0) {
+    console.log("Shopkeeper: Welcome to the shop, " + hero.name + "!");
+  }
+  console.log("Shopkeeper: Type shopInventory to see a list of items.");
+  console.log("Shopkeeper: Type buy(itemID) to purchase that item.");
+
+  shopVisits++;
+};
+
+//=================== buy ==================//
+
+function buy(itemID) {
+
+  if (shop[itemID.name] === null) {
+    return "Shopkeeper: I'm afraid I don't have a " + itemID.name;
+  }
+
+  if (hero.gold <= itemID.cost) {
+    return "Shopkeeper: I'm afraid you don't have enough money for that.";
+  }
+  var reply = prompt("Shopkeeper: " + itemID.name + "costs " + itemID.cost +
+    " gold. Do you want it?", "type yes to buy, anything else to leave").toLowerCase();
+  // test the above
+
+  if (reply === "yes") {
+    hero.gold -= itemID.cost;
+    hero.inventory.push(itemID);
+    return itemID.name + " added to your inventory. You have " + hero.gold + " gold left.";
+  }
+  return "Shopkeeper: Maybe next time, then."
+}
+
+//=================== use ==================//
+
+function use(itemID) {
+  if( (hero.inventory[itemID.name] === null) || (hero.inventory[itemID.name].amount === 0) ){
+    return "You don't have any " + itemID.name + "s with you.";
+  }
+    //check kind of item
+    //use accordingly
+
+    //for now let's go with potion
+hero.life += itemID.power;
+hero.inventory[itemID.name].amount --;
+console.log("You drank a " + itemID.name + " and recovered " + itemID.power + " life points.");
+console.log(hero.name + "'s current life is " + hero.life);
+}
