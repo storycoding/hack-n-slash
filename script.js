@@ -14,7 +14,9 @@ var roll = function(times, sides) {
 
 var generateName = function() {
 
-  var nameArray = ['Noob-Noob', 'Halo', 'Sik', 'krak', 'Steven'];
+  var nameArray = [
+    'Noob-Noob', 'Sik', 'Krak', 'Steven', 'Pablo', 'Courtney', 'Weimin',
+    'Charles', 'Rick', 'Morty', 'Mom', 'Dad', 'Lebowski', 'Mickey', 'Marco'];
 
   var name = nameArray[Math.floor(Math.random() * nameArray.length)];
 
@@ -23,32 +25,27 @@ var generateName = function() {
 
 //============= unit creation ==============//
 
-var createUnit = function(type) {
+function createUnit(unitRaceString, _healthRoll, _speed, _attack, _dodge, _armor, _level, _goldRoll) {
 
-  alert('This is a work in progress, expect the unexpected.');
-
-  if (type != 'goblin') {
-    return ('You can only create a \'goblin\' at this time.');
-  }
-
-  goblinCount++;
-
-  var unit = { // make it so the index of the unit is the unit's name
-    varName: 'gotta use availableUnits[index]', // sort this out
-    name: generateName(),
-    health: roll(2, 4),
-    speed: 1,
-    attack: 4,
-    dodge: 8,
-    armor: 0,
-    level: 2,
-    gold: roll(1, 4)
+  var unit = {
+    varName: unitRaceString,
+    name: unitRaceString + " " + GenerateName(),
+    health: _healthRoll,
+    speed: _speed,
+    attack: _attack,
+    dodge: _dodge,
+    armor: _armor,
+    level: _level,
+    gold: _goldRoll
   };
 
-  availableUnits.push(unit);
+  customUnits[unitRaceString] = unit;
 
-  return unit;
-};
+  console.log("Congratulations! " + unit.name + " was born!");
+  console.log(unit);
+
+  return "Type customUnits to see the full index of your home made monsters";
+}
 
 //============== reward system ==============//
 
@@ -153,6 +150,7 @@ var goblin = {
 };
 
 //===========================================//
+var customUnits = {};
 var deathByCombat = false;
 var shopVisits = 0;
 var combatMessage = "Default";
@@ -328,10 +326,12 @@ console.log("Type moreInfo() to see the list of commands");
 
 
 var moreInfo = function() {
-  console.log("Type checkUnits() to see the list of units");
+
   console.log("Type hero to see your hero's status and inventory");
   console.log("Type shop() to browse the shop for items");
   console.log("Type use() to use an item in your hero's inventory");
+  console.log("Type checkUnits() to see the list of units");
+  console.log("Type createUnit() to make your own beast");
   console.log("Type deathMatch(attacker,victim) to witness a battle do the death");
 };
 
