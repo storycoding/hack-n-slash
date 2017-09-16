@@ -8,3 +8,5 @@ The concept is to make this a game that can only be played with the developer to
 The more advanced users can browse the available functions and hack the script down to their own liking.
 
 Hence, the Hack and Slash (badun-tsss)
+
+Enjoy!
