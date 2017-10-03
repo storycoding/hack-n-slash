@@ -6,21 +6,6 @@ var heroName = 'hero';
 var shopVisits = 0;
 var goldReward = 0;
 
-//================== view ==================//
-
-var view = {
-
-    var unitsUl = document.querySelector("ul");
-    unitsUl.innerHTML = "";
-
-    var unitLi = document.createElement("li");
-    var currentUnit = game.units[i];
-
-    unitLi.textContent = "UnitNameAndStuff"
-    unitUl.appendChild(unitLi);
-}
-
-
 //================== names =================//
 
 var nameArray = [
@@ -98,21 +83,18 @@ function createHero() {
   return window[heroName];
 }
 
-
-
-
 //===========================================//
 //=============== CREATE UNITS ==============//
 //===========================================//
 
-function createUnit() {
+function createUnit(unitNameString, rollStrength, armorValue, rollGold, loot) {
 
-  window[document.getElementById("newUnitName")] = {
-    name: document.getElementById("newUnitName"),
-    strength: document.getElementById("NewUnitStrength"),
-    maxStrength : document.getElementById("NewUnitStrength"),
-    armor: document.getElementById("NewUnitArmor"),
-    gold: document.getElementById("NewUnitGold"),
+  window[unitNameString] = {
+    name: unitNameString,
+    strength: rollStrength,
+    maxStrength : rollStrength,
+    armor: armorValue,
+    gold: rollGold,
     loot: {}
   };
 

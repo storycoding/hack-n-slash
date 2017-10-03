@@ -16,10 +16,10 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
-  padding: 0;
+  padding: 5px;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -45,3 +45,28 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+div {
+    height : 100px;
+    margin-top: : 0px;
+    padding : 5px;
+    width : 400px;
+}
+
+#title {
+    -webkit-box-sizing: content-box; /* chrome and safari*/
+    font-style: italic;
+    font-weight: bold;
+    color : white;
+    background-color: red;
+    border-radius: 50%;
+
+}
+/*section {
+    border : 1px solid #949599;
+    height : 100px;
+    margin : 20px;
+    padding : 20px;
+    width : 400px;
+}*/
+/* JUST A CSS COMMENT */
