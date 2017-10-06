@@ -1,0 +1,59 @@
+
+/* @font-face NOT WORKING */
+@font-face {
+font-family: pixelmix;
+src: url(css/fonts/pixelmix.ttf);
+}
+
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    background-color: gray;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.largeUnit {
+    box-shadow: 0px 0px 10px black;
+    width: 140px;
+    height: 80px;
+    grid-row: 1;
+    display: grid;
+    grid-gap: 2px;
+    background-color: white;
+    border-radius: inherit;
+}
+
+.unit {
+    box-shadow: 0px 0px 10px black;
+    width: 140px;
+    height: 80px;
+    grid-row: 1;
+    display: grid;
+    grid-gap: 2px;
+    background-color: white;
+    border-radius: inherit;
+}
+
+.statsWindow {
+    grid-column: 2;
+    border-radius: inherit;
+}
+
+.portrait {
+    image-resolution: from-image;
+    border-radius: inherit;
+    background-color: brown;
+}
+
+.name {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.statsText {
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'pixelmix'; /* NOT WORKING */
+}
