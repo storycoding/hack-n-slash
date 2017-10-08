@@ -16,21 +16,8 @@ src: url(fonts/04B_30__.ttf);
     padding: 10px;
 }
 
-.largeUnit {
-    box-shadow: 0px 1px 2px #AEBFCC;
-    width: 280px;
-    height: 160px;
-    grid-row: 1/2;
-    display: grid;
-    grid-gap: 2px;
-    background-color: white;
-    border-radius: inherit;
-}
-
 .unit {
     box-shadow: 0px 1px 2px #AEBFCC;
-    width: 140px;
-    height: 80px;
     grid-row: 1;
     display: grid;
     grid-gap: 2px;
@@ -44,6 +31,7 @@ src: url(fonts/04B_30__.ttf);
 }
 
 .portrait {
+    height : 64px;
     margin: auto; /* testing */
     image-resolution: from-image;
     border-radius: inherit;
@@ -72,4 +60,10 @@ src: url(fonts/04B_30__.ttf);
     padding: 5px;
     border-radius: 3px;
     color: white;
+}
+
+.input {
+    /*box-shadow: 0px 1px 2px #AEBFCC; */
+    box-sizing: border-box;
+    border-color: gray;
 }

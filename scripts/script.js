@@ -8,18 +8,6 @@ var goldReward = 0;
 
 //================== view ==================//
 
-var view = {
-
-    var unitsUl = document.querySelector("ul");
-    unitsUl.innerHTML = "";
-
-    var unitLi = document.createElement("li");
-    var currentUnit = game.units[i];
-
-    unitLi.textContent = "UnitNameAndStuff"
-    unitUl.appendChild(unitLi);
-}
-
 
 //================== names =================//
 

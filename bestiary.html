@@ -8,10 +8,16 @@
 </head>
 
 <body>
+    <div>
+        <input class="input" type="text" id="nameInput" value="race">
+        <input class="input" type="text" id="powerInput" value="power">
+        <input class="input" type="text" id="armorInput" value="armor">
+    </div>
+
     <button type:"button" class="unitMaker" id="unitMaker">Create a Unit</button>
     <div id="wrapper" class="wrapper">
 
-        <div class="unit">
+        <!-- div class="unit">
             <div class="portrait">
                 <img src="img/knightX2.png" alt="knightX2.png"></div>
             <div class="statsWindow">
@@ -35,13 +41,10 @@
                     <td class="statsText">ARMOR: 7</td>
                 </tr>
             </table>
-        </div>
+        </div-->
 
     </div>
-
-    <script src="scripts/unitDB.js">
-    //scriptTest(); //doesn't run the function from the js file
-    </script>
-
+    <script src="scripts/nameGenerator.js"></script>
+    <script src="scripts/unitDB.js"></script>
 </body>
 </html>
