@@ -19,18 +19,55 @@ var createUnit = function(name, str, arm) {
 };
 
 var createUnitNode = function(nam,pow,arm) {
-    var unit = document.createElement("div");
-    var name = document.createTextNode(nam);
-    var power = document.createTextNode("power: " + pow);
-    var armor = document.createTextNode("armor: " + arm);
 
-    unit.appendChild(name);
-    unit.appendChild(power);
-    unit.appendChild(armor);
+    if (window[nam] !== undefined) {
+        console.log("unit already exists");
+        return;
+    }
+
+    createUnit(nam, pow, arm);
 
     var wrapper = document.getElementById("wrapper");
+    var unit = document.createElement("div");
+
+        unit.className = "unit";
+
+        var portraitDiv = document.createElement("img");
+        portraitDiv.className = "portrait";
+        portraitDiv.src = "img/crawl/skeletonCorsair.png";
+
+        var statsDiv = document.createElement("div");
+        statsDiv.className = "statsWindow";
+
+        var nameDiv = document.createElement("div");
+        nameDiv.className = "name";
+
+        var powerDiv = document.createElement("div");
+        powerDiv.className = "statsText";
+
+        var armorDiv = document.createElement("div");
+        armorDiv.className = "statsText";
+
+
+        var name = document.createTextNode(nam);
+        var power = document.createTextNode("POWER: " + pow);
+        var armor = document.createTextNode("ARMOR: " + arm);
+
+
+        nameDiv.appendChild(name);
+        powerDiv.appendChild(power);
+        armorDiv.appendChild(armor);
+
+        statsDiv.appendChild(nameDiv);
+        statsDiv.appendChild(powerDiv);
+        statsDiv.appendChild(armorDiv);
+
+        unit.appendChild(portraitDiv);
+        unit.appendChild(statsDiv);
+
+
     wrapper.appendChild(unit);
-    console.log(JSON.stringify(unit));
+    console.log(unit);
 };
 
 // createUnit("Marco", 7, 7);
