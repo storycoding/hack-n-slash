@@ -1,24 +1,26 @@
-
-/* @font-face NOT WORKING */
 @font-face {
 font-family: pixelmix;
-src: url(css/fonts/pixelmix.ttf);
+src: url(fonts/pixelmix.ttf);
+}
+
+@font-face {
+font-family: four;
+src: url(fonts/04B_30__.ttf);
 }
 
 
 .wrapper {
     display: grid;
-    grid-gap: 10px;
-    background-color: gray;
+    /*background-color: gray;*/
     border-radius: 3px;
     padding: 10px;
 }
 
 .largeUnit {
-    box-shadow: 0px 0px 10px black;
-    width: 140px;
-    height: 80px;
-    grid-row: 1;
+    box-shadow: 0px 1px 2px #AEBFCC;
+    width: 280px;
+    height: 160px;
+    grid-row: 1/2;
     display: grid;
     grid-gap: 2px;
     background-color: white;
@@ -26,7 +28,7 @@ src: url(css/fonts/pixelmix.ttf);
 }
 
 .unit {
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 1px 2px #AEBFCC;
     width: 140px;
     height: 80px;
     grid-row: 1;
@@ -42,18 +44,32 @@ src: url(css/fonts/pixelmix.ttf);
 }
 
 .portrait {
+    margin: auto; /* testing */
     image-resolution: from-image;
     border-radius: inherit;
-    background-color: brown;
+    background-color: #CCBEAE;
 }
 
 .name {
+    margin-top: 10px;
+    text-align: left;
     padding: 5px;
     font-size: 14px;
+    font-family: 'four';
+    background: -webkit-linear-gradient(red, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*text-shadow: 1px 1px 4px black;*/
 }
 
 .statsText {
     padding: 5px;
-    font-size: 14px;
-    font-family: 'pixelmix'; /* NOT WORKING */
+    font-size: 10px;
+    font-family: 'pixelmix';
+}
+
+.unitMaker {
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
 }
