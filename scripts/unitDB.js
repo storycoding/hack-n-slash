@@ -47,7 +47,7 @@ var varName = "";
         nam += randomName;
 
     } else {
-        race = nam;
+        race = nam.value;
         varName = race;
         var randomName = generateName();
         varName += randomName;
@@ -139,7 +139,7 @@ var varName = "";
 // do it inside of the createUnit function
 
 var unitMakerButton = document.getElementById('unitMaker');
-console.log(unitMakerButton);
+
 unitMakerButton.addEventListener("click", function(){
     createUnitNode();
 });

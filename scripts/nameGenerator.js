@@ -13,28 +13,36 @@ var raceArray = [
     'demon', 'beholder', 'catfish', 'imp', 'knight', 'abomination'
 ];
 
-  function generateName() {
+  var generateName = function() {
 
     var name = nameArray[Math.floor(Math.random() * nameArray.length)];
 
     return name;
   }
 
-function generateRace() {
+var generateRace = function() {
 
     var race = raceArray[Math.floor(Math.random() * raceArray.length)];
 
     return race;
 }
 
-function generatePortraitLink(race) {
+var generatePortraitLink = function(race) {
+
     link = "img/crawl/";
+
+    if (raceArray.includes(race) ) {
         link += race;
-        link +=".png";
-        return link;
+
+    }else {
+        link += "spectre";
+    }
+
+    link +=".png";
+    return link;
 }
 
-function generateNumber() {
+var generateNumber = function() {
     var number = Math.floor(Math.random() * (10- 1)) + 1;
 
     return number;
