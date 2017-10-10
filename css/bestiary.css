@@ -39,7 +39,6 @@ src: url(fonts/04B_30__.ttf);
 }
 
 .name {
-    margin-top: 10px;
     text-align: left;
     padding: 5px;
     font-size: 14px;
@@ -50,13 +49,21 @@ src: url(fonts/04B_30__.ttf);
     /*text-shadow: 1px 1px 4px black;*/
 }
 
+.race {
+   text-align: left;
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'four';
+    color: gray;
+}
+
 .statsText {
     padding: 5px;
     font-size: 10px;
     font-family: 'pixelmix';
 }
 
-.unitMaker {
+.button {
     padding: 5px;
     border-radius: 3px;
     color: white;

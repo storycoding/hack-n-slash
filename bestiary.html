@@ -8,43 +8,74 @@
 </head>
 
 <body>
-    <div>
-        <input class="input" type="text" id="nameInput" value="race">
-        <input class="input" type="text" id="powerInput" value="power">
-        <input class="input" type="text" id="armorInput" value="armor">
-    </div>
 
-    <button type:"button" class="unitMaker" id="unitMaker">Create a Unit</button>
+
+    <div>
+        <label>
+            race:
+            <select id="raceDropDown">
+                <option value="random">random</option>
+                <option value="skeleton">skeleton</option>
+                <option value="knight">knight</option>
+                <option value = "dragon">dragon</option>
+            </select>
+        </label>
+        <button type:"button" class="button" id="unitMaker">Create</button>
+    </div>
+   
+
     <div id="wrapper" class="wrapper">
 
-        <!-- div class="unit">
-            <div class="portrait">
-                <img src="img/knightX2.png" alt="knightX2.png"></div>
-            <div class="statsWindow">
-                <div id="knight" class="name">knight</div>
-                <div class="statsText">POWER: 5</div>
-                <div class="statsText">ARMOR: 5</div>
-            </div>
-        </div>
-
-        <div class="largeUnit">
-            <div class="portrait">
-                <img src="img/dreadlordX4.png" alt="dreadlordX2.png"></div>
-            <table class="statsWindow">
-                <tr>
-                    <td class="name">dread lord</td>
-                </tr>
-                <tr>
-                    <td class="statsText">POWER: 14</td>
-                </tr>
-                <tr>
-                    <td class="statsText">ARMOR: 7</td>
-                </tr>
-            </table>
-        </div-->
 
     </div>
-    <script src="scripts/nameGenerator.js"></script>
-    <script src="scripts/unitDB.js"></script>
+        <h4>Make your own race: </h4>
+    <div>
+        <label>
+            Race:
+            <input class="input" type="text" id="raceInput" placeholder="race" required>
+        </label>
+
+        <label>
+            strength min:
+            <input class="input" type="number" id="strengthMinInput" placeholder="1" required>
+        </label>
+
+        <label>
+            strength max:
+            <input class="input" type="number" id="strengthMaxInput" placeholder="9" min="1" max="5" required>
+        </label>
+
+        <label>
+            armor min:
+            <input class="input" type="number" id="armorMinInput" placeholder="1" min="1" max="5" required>
+        </label>
+
+        <label>
+            armor max:
+            <input class="input" type="number" id="armorMaxInput" placeholder="9" min="1" max="5" required>
+        </label>
+
+        <label>
+            portrait link:
+            <input class="input" type="text" id="portraitLinkInput" placeholder="paste image link" required>
+        </label>
+    </div>
+
+
+    <div>
+        <button type:"button" class="button" id="raceMaker">Generate</button>
+    </div>
+   
+
 </body>
+
+<footer>
+
+    <script src="scripts/generateUnit.js"></script>
+    <script src="scripts/generators.js"></script>
+    <script src="scripts/dataBase.js"></script>
+    <script src="scripts/buttons.js"></script>
+   
+</footer>
+
 </html>
