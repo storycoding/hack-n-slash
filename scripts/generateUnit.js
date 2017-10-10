@@ -4,8 +4,8 @@
 
 var createUnit = function() {
 
-    if (unitCount > 5) {
-        alert("you can only have 5 units at this time.");
+    if (unitCount > 8) {
+        alert("you can only have 9 units at a time.");
         return;
     }
 
@@ -46,19 +46,19 @@ var createUnitNode = function(race, name, strength, armor) {
 
         var portraitDiv = document.createElement("img");
         portraitDiv.className = "portrait";
-        portraitDiv.src = generatePortraitLink(race);
+        portraitDiv.src = raceLibrary[race].link;
 
         var statsDiv = document.createElement("div");
         statsDiv.className = "statsWindow";
 
         var nameDiv = document.createElement("div");
-        nameDiv.className = "name";
+        nameDiv.className = "unitTitle";
 
          var raceDiv = document.createElement("div");
-        raceDiv.className = "race";
+        raceDiv.className = "unitTitle";
 
-        var powerDiv = document.createElement("div");
-        powerDiv.className = "statsText";
+        var strengthDiv = document.createElement("div");
+        strengthDiv.className = "statsText";
 
         var armorDiv = document.createElement("div");
         armorDiv.className = "statsText";
@@ -70,12 +70,12 @@ var createUnitNode = function(race, name, strength, armor) {
 
         raceDiv.appendChild(raceNode);
         nameDiv.appendChild(nameNode);
-        powerDiv.appendChild(strengthNode);
+        strengthDiv.appendChild(strengthNode);
         armorDiv.appendChild(armorNode);
 
         statsDiv.appendChild(raceDiv);
         statsDiv.appendChild(nameDiv);
-        statsDiv.appendChild(powerDiv);
+        statsDiv.appendChild(strengthDiv);
         statsDiv.appendChild(armorDiv);
 
         unit.appendChild(portraitDiv);
@@ -122,7 +122,8 @@ var generateRacePreset = function() {
     raceLibrary[raceInput] = {
         race : raceInput,
         strength : [strengthMinInput,strengthMaxInput],
-        armor : [armorMinInput,armorMaxInput]
+        armor : [armorMinInput,armorMaxInput],
+        link: "gif/spectre.gif"
     };
 
     //DROPDOWN MENU NODE

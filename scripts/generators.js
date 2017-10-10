@@ -53,24 +53,7 @@ var generateArmor = function(race) {
     var min = range[0];
     var max = range[1];
 
-    var armor = = generateNumber(min,max);
+    var armor = generateNumber(min,max);
 
     return armor;
-};
-
-
-
-var generatePortraitLink = function(race) {
-    var link = "img/crawl/";
-
-    if (raceArray.includes(race) ) {
-        link += race;
-
-    }else {
-        link += "spectre"; //erase this when I find how to return something from a site
-    }
-
-    link +=".png";
-
-    return link;
 };
