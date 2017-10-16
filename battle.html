@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>index</title>
+
+        </script>
+    </head>
+
+    <body id="body">
+        <div class="title">
+            CREATURE COMBAT
+        </div>
+
+        <div class="grid">
+
+            <div class="gridElement">
+                    <h3>Dragon</h3>
+                    <h4>strength: 18</h4>
+                    <h4>armor: 12</h4>
+                    <h4>break: 2</h4>
+            </div>
+
+            <h2 class="gridElement">VS</h2>
+
+            <div class="gridElement">
+                    <h3>Chimaera</h3>
+                    <h4>strength: 26</h4>
+                    <h4>armor: 4</h4>
+                    <h4>break: 6</h4>
+            </div>
+
+        </div>
+
+        <div class="grid">
+                <button class="attackButton" type="button" id="attack" >Attack</button>
+                <button class="breakButton" type="button" id="break" >Break</button>
+        </div>
+
+        <script src="creatures.js" charset="utf-8">
+        createChessboard();
+        </script>
+
+        <table>
+            <tr>
+                <td class="black" id="a0"></td>
+                <td class="white" id="a1"></td>
+                <td class="black" id="a2"></td>
+                <td class="white" id="a3"></td>
+            </tr>
+            <tr>
+                <td class="white" id="b0"></td>
+                <td class="black" id="b1">H</td>
+                <td class="white" id="b2"></td>
+                <td class="black" id="b3"></td>
+            </tr>
+            <tr>
+                <td class="black" id="c0"></td>
+                <td class="white" id="c1"></td>
+                <td class="black" id="c2"></td>
+                <td class="white" id="c3"></td>
+            </tr>
+            <tr>
+                <td class="white" id="d0"></td>
+                <td class="black" id="d1"></td>
+                <td class="white" id="d2"></td>
+                <td class="black" id="d3"></td>
+            </tr>
+        </table>
+
+
+    </body>
+    <footer>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="creatures.js"></script>
+    </footer>
+</html>

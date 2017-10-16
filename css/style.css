@@ -8,6 +8,11 @@ font-family: four;
 src: url(fonts/04B_30__.ttf);
 }
 
+
+/*=====================*/
+/*===== BESTIARY  =====*/
+/*=====================*/
+
 .title {
     font-family: 'four';
     background: -webkit-linear-gradient(gray, black);
@@ -84,3 +89,60 @@ src: url(fonts/04B_30__.ttf);
     padding: 3px;
     border-color: gray;
 }
+
+/*=====================*/
+/*====== BATTLE =======*/
+/*=====================*/
+
+
+.table {
+    height: 50px ;
+    width: 50px ;
+}
+
+.black {
+    background: black;
+    color: white;
+    height: 50px;
+    width: 50px;
+}
+
+.white {
+    background: white;
+    color: black;
+    height: 50px;
+    width: 50px;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    border-radius: 5px;
+}
+
+.gridElement {
+    grid-row: 1;
+    margin: auto;
+}
+
+.attackButton {
+    grid-row: 1;
+    color: white;
+    background: red;
+    font-size: 36px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.breakButton {
+    grid-row: 1;
+    color: white;
+    background: cyan;
+    font-size: 36px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+/* set the css style for the buttons to square grid elements just like the html version of grid*/
+
+

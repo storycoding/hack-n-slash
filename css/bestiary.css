@@ -1,0 +1,138 @@
+@font-face {
+font-family: pixelmix;
+src: url(fonts/pixelmix.ttf);
+}
+
+@font-face {
+font-family: four;
+src: url(fonts/04B_30__.ttf);
+}
+
+
+.wrapper {
+    display: grid;
+    /*background-color: gray;*/
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.unit {
+    box-shadow: 0px 1px 2px #AEBFCC;
+    grid-row: 1;
+    display: grid;
+    grid-gap: 2px;
+    background-color: white;
+    border-radius: inherit;
+}
+
+.statsWindow {
+    grid-column: 2;
+    border-radius: inherit;
+}
+
+.portrait {
+    height : 64px;
+    margin: auto; /* testing */
+    image-resolution: from-image;
+    border-radius: inherit;
+    background-color: #CCBEAE;
+}
+
+.name {
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'four';
+    background: -webkit-linear-gradient(black, gray);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*text-shadow: 1px 1px 4px black;*/
+}
+
+.race {
+   text-align: left;
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'four';
+    color: gray;
+}
+
+.statsText {
+    padding: 5px;
+    font-size: 10px;
+    font-family: 'pixelmix';
+}
+
+.button {
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+}
+
+.input {
+    /*box-shadow: 0px 1px 2px #AEBFCC; */
+    box-sizing: border-box;
+    border-color: gray;
+}
+
+
+/*==== BATTLE ====*/
+
+.title {
+    align-content: center;
+}
+
+.table {
+    height: 50px ;
+    width: 50px ;
+}
+
+.black {
+    background: black;
+    color: white;
+    height: 50px;
+    width: 50px;
+}
+
+.white {
+    background: white;
+    color: black;
+    height: 50px;
+    width: 50px;
+}
+
+.table {
+
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    border-radius: 5px;
+}
+
+.gridElement {
+    grid-row: 1;
+    margin: auto;
+}
+
+.attackButton {
+    grid-row: 1;
+    color: white;
+    background: red;
+    font-size: 36px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.breakButton {
+    grid-row: 1;
+    color: white;
+    background: cyan;
+    font-size: 36px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+/* set the css style for the buttons to square grid elements just like the html version of grid*/
+

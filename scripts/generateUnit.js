@@ -39,6 +39,7 @@ var createUnitObject = function(race, name, strength, armor) {
 
 var createUnitNode = function(race, name, strength, armor) {
     
+
     var wrapper = document.getElementById("wrapper");
     var unit = document.createElement("div");
 
@@ -81,6 +82,7 @@ var createUnitNode = function(race, name, strength, armor) {
         unit.appendChild(portraitDiv);
         unit.appendChild(statsDiv);
 
+        //return unit;  SPLIT FUNCTION HERE
 
     wrapper.appendChild(unit);
     console.log(unit);
@@ -89,8 +91,12 @@ var createUnitNode = function(race, name, strength, armor) {
     console.log("Node created for " + race + name + ".");
 };
 
+//================ APPEND NODE ==============//
 
-
+// var appendChild = function(parentNode) {
+// parentNode.appendChild(createUnitNode(race, name, strength, armor));
+// //uses createUnitNode on the targeted element;
+// }
 
 
 //===========================================//
