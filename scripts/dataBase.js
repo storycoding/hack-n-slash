@@ -2,9 +2,39 @@
 //================GAME DATABASE==============//
 //===========================================//
 
+var nodeLibrary = {};
+
 var unitCount = 0;
 
-var units = {};
+var unitLibrary = {
+
+    zombieRick : {
+        race: "zombie",
+        name: "Rick",
+        strength: 1,
+        armor: 0,
+        node: "undefined",
+        link: "gif/zombie.gif"
+    },
+
+    skeletonMorty : {
+        race: "skeleton",
+        name: "Morty",
+        strength: 2,
+        armor: 1,
+        node: "undefined",
+        link: "gif/skeleton.gif"
+    },
+
+    goblinNoobNoob : {
+        race: "goblin",
+        name: "Noob Noob",
+        strength: 1,
+        armor: 1,
+        node: "undefined",
+        link: "gif/goblin.gif"
+    }
+};
 
 
 //===========================================//

@@ -111,7 +111,6 @@ var logChessboard = function() {
 }
 
 
-
 var log fighters = function(unitA, unitB) {
    var unitA = units[unitA];
    var unitB = units[unitB];

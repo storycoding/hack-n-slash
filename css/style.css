@@ -14,10 +14,16 @@ src: url(fonts/04B_30__.ttf);
 /*=====================*/
 
 .title {
+    font-size: 40px;
     font-family: 'four';
     background: -webkit-linear-gradient(gray, black);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.creatureDisplay {
+    width: 800px;
+    height: 360px;
 }
 
 .wrapper {
@@ -94,26 +100,6 @@ src: url(fonts/04B_30__.ttf);
 /*====== BATTLE =======*/
 /*=====================*/
 
-
-.table {
-    height: 50px ;
-    width: 50px ;
-}
-
-.black {
-    background: black;
-    color: white;
-    height: 50px;
-    width: 50px;
-}
-
-.white {
-    background: white;
-    color: black;
-    height: 50px;
-    width: 50px;
-}
-
 .grid {
     display: grid;
     grid-gap: 10px;
@@ -126,12 +112,17 @@ src: url(fonts/04B_30__.ttf);
 }
 
 .attackButton {
+    margin: auto;
     grid-row: 1;
-    color: white;
-    background: red;
+    font-family: 'four';
     font-size: 36px;
+    border-width: 2px;
     border-radius: 5px;
-    border: 0px;
+    border-color: gray;
+     background: -webkit-linear-gradient(gray, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: 0px 1px 2px #AEBFCC;
 }
 
 .breakButton {
@@ -143,6 +134,32 @@ src: url(fonts/04B_30__.ttf);
     border: 0px;
 }
 
+.p {
+    font-size: 14px;
+    font-family: 'four';
+}
+
+.battleLog {
+    grid-template-columns: 250px 250px 250px;
+    background-color: gray;
+    border-width: 3px;
+    border-color: black;
+    color: white;
+}
+
+.battleLogA {
+    grid-column: 1/2;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+.battleLogB {
+    grid-column: 2/3;
+    background-color: white;
+    color: black;
+    border-radius: 5px
+}
 /* set the css style for the buttons to square grid elements just like the html version of grid*/
 
 

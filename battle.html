@@ -13,65 +13,63 @@
         </div>
 
         <div class="grid">
-
             <div class="gridElement">
-                    <h3>Dragon</h3>
-                    <h4>strength: 18</h4>
-                    <h4>armor: 12</h4>
-                    <h4>break: 2</h4>
+                <select id="unitADropDown" onchange="updateDropDownA()">
+                    <option value="zombieRick">zombieRick</option>
+                    <option value ="skeletonMorty">skeletonMorty</option>
+                </select>
+
+                <div id="unitA" class="unit">
+                    <img class="portrait" src="gif/zombie.gif">
+                    <div class="statsWindow">
+                        <div class="unitTitle">zombie</div>
+                        <div class="unitTitle">Rick</div>
+                        <div class="statsText">STRENGTH: 1</div>
+                        <div class="statsText">ARMOR: 0</div>
+                    </div>
+                </div>
+
             </div>
+
 
             <h2 class="gridElement">VS</h2>
 
+
             <div class="gridElement">
-                    <h3>Chimaera</h3>
-                    <h4>strength: 26</h4>
-                    <h4>armor: 4</h4>
-                    <h4>break: 6</h4>
+
+                <select id="unitBDropDown" onchange="updateDropDownB()">
+                    <option value="zombieRick">zombieRick</option>
+                    <option value ="skeletonMorty">skeletonMorty</option>
+                </select>
+
+                <div id="unitB" class="unit">
+                <img class="portrait" src="gif/skeleton.gif">
+                    <div class="statsWindow">
+                        <div class="unitTitle">skeleton</div>
+                        <div class="unitTitle">Morty</div>
+                        <div class="statsText">STRENGTH: 2</div>
+                        <div class="statsText">ARMOR: 1</div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
         <div class="grid">
                 <button class="attackButton" type="button" id="attack" >Attack</button>
-                <button class="breakButton" type="button" id="break" >Break</button>
+                <!--button class="breakButton" type="button" id="break" >Break</button-->
         </div>
 
-        <script src="creatures.js" charset="utf-8">
-        createChessboard();
-        </script>
-
-        <table>
-            <tr>
-                <td class="black" id="a0"></td>
-                <td class="white" id="a1"></td>
-                <td class="black" id="a2"></td>
-                <td class="white" id="a3"></td>
-            </tr>
-            <tr>
-                <td class="white" id="b0"></td>
-                <td class="black" id="b1">H</td>
-                <td class="white" id="b2"></td>
-                <td class="black" id="b3"></td>
-            </tr>
-            <tr>
-                <td class="black" id="c0"></td>
-                <td class="white" id="c1"></td>
-                <td class="black" id="c2"></td>
-                <td class="white" id="c3"></td>
-            </tr>
-            <tr>
-                <td class="white" id="d0"></td>
-                <td class="black" id="d1"></td>
-                <td class="white" id="d2"></td>
-                <td class="black" id="d3"></td>
-            </tr>
-        </table>
 
 
     </body>
     <footer>
         <link rel="stylesheet" href="css/style.css">
-        <script src="creatures.js"></script>
+        <script src="scripts/battle.js"></script>
+        <script src="scripts/dataBase.js"></script>
+        <script src="scripts/battleButtons.js"></script>
+        <script src="scripts/generators.js"></script>
+        <script src="scripts/domOperators.js"></script>
     </footer>
 </html>

@@ -1,0 +1,20 @@
+.black {
+background: black;
+color: white;
+height: 50px;
+width: 50px;
+}
+
+
+.white {
+background: white;
+color: black;
+height: 50px;
+width: 50px;
+}
+
+.chessboardTable {
+border-width: 5px;
+border-color: black;
+border-style: double;
+}

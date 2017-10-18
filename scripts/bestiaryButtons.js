@@ -5,9 +5,8 @@ unitMakerButton.addEventListener("click", function(){
 	});
 
 
-
 var raceMakerButton = document.getElementById('raceMaker');
 
-raceMakerButton.addEventListener("click", function(){
-    generateRacePreset();
-	});
+// raceMakerButton.addEventListener("click", function(){
+//     generateRacePreset();
+// 	});
