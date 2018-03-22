@@ -11,7 +11,7 @@ open /dist/index.html
 
 To open the latest version of the game script
 ```
-open /dist/index.html
+open /dist/index.js
 ```
 
 ### Installing
