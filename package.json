@@ -1,0 +1,19 @@
+{
+  "name": "hack-n-slash",
+  "version": "1.0.0",
+  "description": "a hack-n-slash game for developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/storycoding/hack-n-slash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/storycoding/hack-n-slash/issues"
+  },
+  "homepage": "https://github.com/storycoding/hack-n-slash#readme"
+}

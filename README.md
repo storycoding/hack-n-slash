@@ -1,12 +1,41 @@
-# HackAndSlash
-A hackable hack 'n' slash for coders
+# hack-n-slash
 
-This is a Toy I started developing on a Friday during the HR-SSP5.
+A console hack-n-slash game for developers.
 
-The concept is to make this a game that can only be played with the developer tools, but lends itself to beginner programmers.
+## Getting Started
 
-The more advanced users can browse the available functions and hack the script down to their own liking.
+To play the game, run the following command on your terminal
+```
+open /dist/index.html
+```
 
-Hence, the Hack and Slash (badun-tsss)
+To open the latest version of the game script
+```
+open /dist/index.html
+```
 
-Enjoy!
+### Installing
+
+This game requires no external packages. All you need is [Node.js](https://nodejs.org/en/)
+
+## Running the tests
+
+TBD
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Authors
+
+* **Nuno Neves** - *Initial work* - [storycoding](https://github.com/storycoding)
+
+See also the list of [contributors](https://github.com/storycoding/hack-n-slash/graphs/contributors) who participated in this project.
+
+## License
+
+This projece is UNLICENCED
+
+## Acknowledgments
+
+* The Hack Reactor SSP5 team for teaching me javascript.
