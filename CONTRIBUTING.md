@@ -9,3 +9,13 @@
 ## Ideas
 
 If you're geeky enough to sprout an idea, by all means, shoot me an email at youknownuno@gmail.com !
+
+## Todos
+
+* make a critical hit (ignores armor)
+* fix endless loop if character battlees itself with less strength than armor
+* test everything
+* make final boss
+* a unit reroll function
+* expand shop and item usage HoF
+* expand battle reward system

@@ -396,15 +396,3 @@ alert("Hello " + units[heroName].name + "! This is a hackable hack and slash!");
 alert("Type help() to see the list of commands");
 console.log("Hello " + units[heroName].name + "! This is a hackable hack and slash!");
 console.log("Type help() to see the list of commands");
-
-//===========================================//
-//================ TO DO LIST ===============//
-//===========================================//
-
-// make a critical hit (ignores armor)
-// fix endless loop if character battlees itself with less strength than armor
-// test everything
-// make final boss
-// a unit reroll function
-// expand shop and item usage HoF
-// expand battle reward system
