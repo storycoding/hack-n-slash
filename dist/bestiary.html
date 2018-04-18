@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bestiary</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <div>
+        <label>
+            race:
+            <select id="raceDropDown" class="dropDown">
+                <option value="random">random</option>
+                <option value = "zombie">zombie</option>
+                <option value = "goblin">goblin</option>
+                <option value="skeleton">skeleton</option>
+                <option value = "satyr">satyr</option>
+                <option value="knight">knight</option>
+                <option value = "octopus">octopus</option>
+                <option value = "dragon">dragon</option>
+                <option value = "gryphon">gryphon</option>
+            </select>
+        </label>
+        <button type:"button" class="button" id="unitMaker">Create</button>
+    </div>
+   
+    <div class="creatureDisplay">
+      <div id="wrapper" class="wrapper">  
+    </div>
+    
+
+
+</body>
+
+<script src="../src/domOperators.js"></script>
+    <script src="../src/generators.js"></script>
+    <script src="../src/dataBase.js"></script>
+    <script src="../src/bestiaryButtons.js"></script>
+</html>
