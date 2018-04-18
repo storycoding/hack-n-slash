@@ -266,7 +266,7 @@ function shop() {
     console.log("Shopkeeper: Welcome to the shop, " + units[heroName].name + "!");
   }
   console.log("Shopkeeper: Type shopLoot to see a list of items.");
-  console.log("Shopkeeper: Type buy(itemID) to purchase that item.");
+  console.log("Shopkeeper: Type buy('itemName') to purchase that item.");
 
   shopVisits++;
 }
