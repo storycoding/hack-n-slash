@@ -1,0 +1,8 @@
+[
+	{
+		"name":"shield",
+		"description":"increases armor by 2",
+		"val":2,
+		"cost":3
+	}
+]

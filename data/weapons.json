@@ -1,0 +1,8 @@
+[
+	{
+		"name":"sword",
+		"description":"increases strength by 2",
+		"val":2,
+		"cost":5
+	}
+]

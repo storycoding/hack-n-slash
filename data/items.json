@@ -1,0 +1,9 @@
+[
+	{
+		"id":1,
+		"name":"potion",
+		"description":"heals you for 4 hp",
+		"val":4,
+		"cost":2
+	}
+]
